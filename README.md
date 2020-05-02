@@ -3,8 +3,8 @@
 Pandoc for Japanese based on Alpine Linux.
 
 - Tex Live 2020
-- pandoc 2.7.2
-- pandoc-crossref 0.3.4.1
+- pandoc 2.9.2
+- pandoc-crossref 0.3.6.2
 
 ## Usage
 
