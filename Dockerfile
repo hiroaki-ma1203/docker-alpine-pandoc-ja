@@ -4,7 +4,7 @@ LABEL maintainer="hiroaki-ma1203 <hiroaki.ma1203@gmail.com>" \
       description="Pandoc for Japanese based on Alpine Linux."
 
 # Install Tex Live
-ENV TEXLIVE_VERSION 2018
+ENV TEXLIVE_VERSION 2019
 ENV TEXLIVE_REPOGITORY http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/$TEXLIVE_VERSION/tlnet-final/
 ENV PATH /usr/local/texlive/$TEXLIVE_VERSION/bin/x86_64-linuxmusl:$PATH
 
