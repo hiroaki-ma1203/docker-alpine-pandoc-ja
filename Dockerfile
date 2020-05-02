@@ -32,7 +32,7 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev \
  && apk --no-cache del xz tar fontconfig-dev
 
 # Install Pandoc
-ENV PANDOC_VERSION 2.7.2
+ENV PANDOC_VERSION 2.9.2
 ENV PANDOC_DOWNLOAD_URL https://github.com/jgm/pandoc/archive/$PANDOC_VERSION.tar.gz
 ENV PANDOC_DOWNLOAD_SHA512 4b3a21cf76777ed269bf7c13fd09ab1d5c97ed21ec9f02bff95fd3641ac9d52bde19a6e2ffb325378e611dfbe66b8b00769d8510a8b2fb1dfda8062d79b12233
 ENV PANDOC_ROOT /usr/local/pandoc
