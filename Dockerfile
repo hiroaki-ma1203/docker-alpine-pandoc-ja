@@ -1,15 +1,16 @@
 FROM frolvlad/alpine-glibc
 
-LABEL maintainer="k1LoW <k1lowxb@gmail.com>" \
+LABEL maintainer="hiroaki-ma1203 <hiroaki.ma1203@gmail.com>" \
       description="Pandoc for Japanese based on Alpine Linux."
 
 # Install Tex Live
-ENV TEXLIVE_VERSION 2019
+ENV TEXLIVE_VERSION 2020
+ENV TEXLIVE_REPOGITORY http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/$TEXLIVE_VERSION/tlnet-final/
 ENV PATH /usr/local/texlive/$TEXLIVE_VERSION/bin/x86_64-linuxmusl:$PATH
 
 RUN apk --no-cache add perl wget xz tar fontconfig-dev \
  && mkdir -p /tmp/src/install-tl-unx \
- && wget -qO- ftp://tug.org/texlive/historic/$TEXLIVE_VERSION/install-tl-unx.tar.gz | \
+ && wget -qO- $TEXLIVE_REPOGITORY/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/src/install-tl-unx --strip-components=1 \
  && printf "%s\n" \
       "selected_scheme scheme-basic" \
@@ -18,7 +19,8 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev \
       > /tmp/src/install-tl-unx/texlive.profile \
  && /tmp/src/install-tl-unx/install-tl \
       --profile=/tmp/src/install-tl-unx/texlive.profile \
- && tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet \
+      --repository=$TEXLIVE_REPOGITORY \
+ && tlmgr option repository $TEXLIVE_REPOGITORY \
  && tlmgr update --self && tlmgr update --all \
  && tlmgr install \
       collection-basic collection-latex \
@@ -60,6 +62,10 @@ RUN apk add --no-cache \
  && apk del --purge build-dependencies \
  && rm -Rf /root/.cabal/ /root/.ghc/ \
  && cd / && rm -Rf /pandoc-build
+ 
+# install pandoc-crossref
+RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.4.1/linux-pandoc_2_7_2.tar.gz -q -O - | tar xz \
+ && mv pandoc-crossref /usr/bin/
 
 VOLUME ["/workspace", "/root/.pandoc/templates"]
 WORKDIR /workspace
