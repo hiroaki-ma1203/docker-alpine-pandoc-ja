@@ -64,7 +64,7 @@ RUN apk add --no-cache \
  && cd / && rm -Rf /pandoc-build
  
 # install pandoc-crossref
-RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.4.1/linux-pandoc_2_7_2.tar.gz -q -O - | tar xz \
+RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.6.2/linux-pandoc_2_9_2.tar.gz -q -O - | tar xz \
  && mv pandoc-crossref /usr/bin/
 
 VOLUME ["/workspace", "/root/.pandoc/templates"]
