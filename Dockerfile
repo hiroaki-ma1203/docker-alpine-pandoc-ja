@@ -5,7 +5,7 @@ LABEL maintainer="hiroaki-ma1203 <hiroaki.ma1203@gmail.com>" \
 
 # Install Tex Live
 ENV TEXLIVE_VERSION 2020
-ENV TEXLIVE_REPOGITORY http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/$TEXLIVE_VERSION/tlnet-final/
+ENV TEXLIVE_REPOGITORY http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/$TEXLIVE_VERSION/
 ENV PATH /usr/local/texlive/$TEXLIVE_VERSION/bin/x86_64-linuxmusl:$PATH
 
 RUN apk --no-cache add perl wget xz tar fontconfig-dev \
