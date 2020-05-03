@@ -28,6 +28,11 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev \
       collection-fontsrecommended collection-langjapanese latexmk \
       luatexbase ctablestack fontspec luaotfload lualatex-math \
       sourcesanspro sourcecodepro \
+      # Install modules for "eisvogel" template
+      adjustbox babel-german background bidi collectbox csquotes everypage filehook \
+      footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights \
+      needspace pagecolor titling ucharcat ulem unicode-math \
+      upquote xecjk xurl zref\
  && rm -Rf /tmp/src \
  && apk --no-cache del xz tar fontconfig-dev
 
