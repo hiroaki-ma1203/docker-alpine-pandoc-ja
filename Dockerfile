@@ -28,11 +28,6 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev \
       collection-fontsrecommended collection-langjapanese latexmk \
       luatexbase ctablestack fontspec luaotfload lualatex-math \
       sourcesanspro sourcecodepro \
-      # Install modules for "eisvogel" template
-      adjustbox babel-german background bidi collectbox csquotes everypage filehook \
-      footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights \
-      needspace pagecolor titling ucharcat ulem unicode-math \
-      upquote xecjk xurl zref\
  && rm -Rf /tmp/src \
  && apk --no-cache del xz tar fontconfig-dev
 
@@ -72,9 +67,11 @@ RUN apk add --no-cache \
 RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.6.2/linux-pandoc_2_9_2.tar.gz -q -O - | tar xz \
  && mv pandoc-crossref /usr/bin/
 
-# Install eisvogel templates
-RUN wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex \
- && mv eisvogel.tex /root/.pandoc/templates/eisvogel.latex
+# Install EISVOGEL templates
+ENV EISVOGEL_DOWNLOAD_URL https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex
+
+RUN wget EISVOGEL_DOWNLOAD_URL -O /root/.pandoc/templates/eisvogel.latex
+
 
 VOLUME ["/workspace", "/root/.pandoc/templates"]
 WORKDIR /workspace
