@@ -72,5 +72,9 @@ RUN apk add --no-cache \
 RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.6.2/linux-pandoc_2_9_2.tar.gz -q -O - | tar xz \
  && mv pandoc-crossref /usr/bin/
 
+# Install eisvogel templates
+RUN wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex \
+ && mv eisvogel.tex /root/.pandoc/templates/eisvogel.latex
+
 VOLUME ["/workspace", "/root/.pandoc/templates"]
 WORKDIR /workspace
