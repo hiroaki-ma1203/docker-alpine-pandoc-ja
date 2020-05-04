@@ -69,7 +69,8 @@ RUN wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.6.2
 
 # Install EISVOGEL templates
 RUN mkdir -p /root/.pandoc/templates \
-    && wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O /root/.pandoc/templates/eisvogel.latex
+    && wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex \
+    -O /usr/local/pandoc/share/x86_64-linux-ghc-8.6.5/pandoc-2.9.2.1/data/templates/eisvogel.latex
 
 
 VOLUME ["/workspace", "/root/.pandoc/templates"]
