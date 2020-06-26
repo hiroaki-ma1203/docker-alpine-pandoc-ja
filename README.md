@@ -22,7 +22,7 @@ $ docker run -it --rm -v `pwd`:/workspace hiroaki1203/alpine-pandoc-ja pandoc in
 
 ```sh
 $ mkdir templates
-$ docker run -it --rm -v `pwd`:/workspace hiroaki-ma1203/pandoc:latest pandoc input.md -f markdown -o output.pdf --pdf-engine=lualatex --template eisvogel
+$ docker run -it --rm -v `pwd`:/workspace hiroaki1203/alpine-pandoc-ja pandoc input.md -f markdown -o output.pdf --pdf-engine=lualatex --template eisvogel
 ```
 
 ### Use Other Template
@@ -30,7 +30,7 @@ $ docker run -it --rm -v `pwd`:/workspace hiroaki-ma1203/pandoc:latest pandoc in
 ```sh
 $ mkdir templates
 $ wget https://someware.temprate.com/filepath/template-file.tex -O templates/template-file.tex
-$ docker run -it --rm -v `pwd`:/workspace -v `pwd`/templates:/root/.pandoc/templates hiroaki-ma1203/pandoc:latest pandoc input.md -f markdown -o output.pdf --pdf-engine=lualatex --template template-file.tex
+$ docker run -it --rm -v `pwd`:/workspace -v `pwd`/templates:/root/.pandoc/templates hiroaki1203/alpine-pandoc-ja pandoc input.md -f markdown -o output.pdf --pdf-engine=lualatex --template template-file.tex
 ```
 
 ## Reference
